@@ -17,7 +17,7 @@ lab = 'labels.txt';
 ClassifyMethod = {'svm','lda','logreg','ensemble'};
 
 AllClassMask = 'mask4_vt.nii';
-[label,tag,chunk] = readlable([DataFolder,lab]);
+[label,tag,chunk] = Myreadlable([DataFolder,lab]);
 inputdata = load_nii([DataFolder,bol]);
 AllClassMaskData = load_nii([DataFolder,AllClassMask]);
 X = double(inputdata.img);

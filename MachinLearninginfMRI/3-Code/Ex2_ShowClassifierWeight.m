@@ -18,7 +18,7 @@ lab = 'labels.txt';
 ClassifyMethod = {'lda','svm','logreg','ensemble'};
 
 AllClassMask = 'mask4_vt.nii';
-[label,tag,chunk] = readlable([lab]);
+[label,tag,chunk] = Myreadlable([lab]);
 inputdata = load_nii([DataFolder,bol]);
 AllClassMaskData = load_nii([DataFolder,AllClassMask]);
 AnatomData = load_nii([DataFolder,AllClassMask]);

@@ -17,7 +17,7 @@ lab = 'labels.txt';
 ClassifyMethod = {'svm','lda','logreg','ensemble'};
 
 AllClassMask = 'mask4_vt.nii';
-[label,tag,chunk] = readlable([lab]);
+[label,tag,chunk] = Myreadlable([lab]);
 inputdata = load_nii([DataFolder,bol]);
 AllClassMaskData = load_nii([DataFolder,AllClassMask]);
 X = double(inputdata.img);
@@ -32,7 +32,8 @@ xdata = zscore(xdata,0,2);
 group = label;
 
 %% Classification with chunk leaveOneGroupOut
-category=6;
+category=9; %% 9=Rest
+
 Y = ones(size(group));
 Y(group==category) = 2;
 
@@ -47,7 +48,7 @@ for i = 1:CVO.NumTestSets
     CVO.TestSize(i) = sum(teIdx);
 
     % Modeling
-    ytest = MyClassify('svm',xdata(:,trIdx)',Y(trIdx),xdata(:,teIdx)');
+    ytest = MyClassify('lda',xdata(:,trIdx)',Y(trIdx),xdata(:,teIdx)');
 
     % Accuracy
     err(i) = ClassifyScore(ytest,Y(teIdx));

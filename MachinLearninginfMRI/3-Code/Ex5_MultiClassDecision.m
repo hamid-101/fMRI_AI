@@ -12,7 +12,7 @@ lab = 'labels.txt';
 ClassifyMethod = {'multiclass_lda'};
 
 AllClassMask = 'mask4_vt.nii';
-[label,tag,chunk] = readlable([DataFolder,lab]);
+[label,tag,chunk] = Myreadlable([DataFolder,lab]);
 inputdata = load_nii([DataFolder,bol]);
 AllClassMaskData = load_nii([DataFolder,AllClassMask]);
 X = double(inputdata.img);
